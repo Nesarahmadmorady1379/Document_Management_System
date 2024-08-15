@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document Registration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  </head>
+  <body>
+   
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand text-white" href="#">Document Management System</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active text-white" aria-current="page" href="/home">Home page</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="import_documents">Import Document</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="export_documents">Export Document</a>
+            </li>
+          </ul>
+          <div>
+            <a class="nav-link text-white" href="document_register">New Document Register</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container my-5 p-5" style="border:1px solid black;">
+      <h4 class="text-center">New Document Register</h4>
+      <form class="col-md-6 offset-md-3" th:action="@{/save}" method="post" enctype="multipart/form-data">
+          
+        <div class="mb-3">
+          <label for="type" class="form-label">Type</label>
+          <input type="text" class="form-control" name="type" required>
+          <div class="invalid-feedback">
+            Please provide the document type.
+          </div>
+        </div>
+        
+        <div class="mb-3">
+          <label for="sender" class="form-label">Sender</label>
+          <input type="text" class="form-control" name="sender" required>
+          <div class="invalid-feedback">
+            Please provide the sender's name.
+          </div>
+        </div>
+        
+        <div class="mb-3">
+          <label for="receiver" class="form-label">Reseiver</label>
+          <input type="text" class="form-control" name="reseiver" required>
+          <div class="invalid-feedback">
+            Please provide the receiver's name.
+          </div>
+        </div>
+        
+        <div class="mb-3">
+          <label for="sended_date" class="form-label">Sent Date</label>
+          <input type="date" class="form-control" name="sended_date" required>
+          <div class="invalid-feedback">
+            Please provide the sent date.
+          </div>
+        </div>
+        
+        <div class="mb-3">
+          <label for="register_number" class="form-label">Register Number</label>
+          <input type="text" class="form-control" name="register_number" required>
+          <div class="invalid-feedback">
+            Please provide the register number.
+          </div>
+        </div>
+        
+        <div class="mb-3">
+          <label for="register_date" class="form-label">Register Date</label>
+          <input type="date" class="form-control" name="register_date" required>
+          <div class="invalid-feedback">
+            Please provide the register date.
+          </div>
+        </div>
+        
+        <div class="mb-3">
+          <label for="about_document" class="form-label">About Document</label>
+          <input type="text" class="form-control" name="about_document" required>
+          <div class="invalid-feedback">
+            Please provide information about the document.
+          </div>
+        </div>
+        
+        <div class="mb-3">
+          <label for="serial_number" class="form-label">Serial Number</label>
+          <input type="text" class="form-control" name="serial_number" required>
+          <div class="invalid-feedback">
+            Please provide the serial number.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="document_file" class="form-label">Document File (PDF)</label>
+          <input type="file" class="form-control" name="document_file" accept=".pdf" required>
+          
+          <div class="invalid-feedback">
+            Please upload a PDF document.
+          </div>
+        </div>
+        
+        <center><button type="submit" class="btn btn-primary">Submit</button></center>
+      </form>
+    </div>
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </body>
+</html>
