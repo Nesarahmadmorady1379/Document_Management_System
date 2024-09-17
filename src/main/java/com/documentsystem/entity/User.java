@@ -1,4 +1,4 @@
-package com.Documents.entity;
+package com.documentsystem.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -30,5 +30,3 @@ public class User {
 	
 	 
 }
-
-

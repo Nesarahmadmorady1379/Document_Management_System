@@ -1,7 +1,3 @@
-Apologies for that. Here’s the complete code for `DocumentEdit.html`:
-
-### `DocumentEdit.html`
-```html
 <!doctype html>
 <html lang="en">
 <head>
@@ -24,51 +20,63 @@ Apologies for that. Here’s the complete code for `DocumentEdit.html`:
         </div>
     </div>
 </nav>
+
 <div class="container my-5">
-    <h4 class="text-center">Edit Document</h4>
-    <form class="col-md-8 offset-md-2" th:action="@{/save}" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="id" th:value="${document.id}">
-        <div class="mb-3">
-            <label for="type" class="form-label">Type</label>
-            <input type="text" class="form-control" id="type" name="type" th:value="${document.type}" required>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="text-center">Edit Document</h4>
+            <form th:action="@{/updateDocument}" th:object="${document}" method="post" enctype="multipart/form-data">
+                <input type="hidden" th:field="*{id}" />
+                
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name:</label>
+                    <input type="text" class="form-control" th:field="*{name}" id="name" required />
+
+                </div>
+
+                <div class="mb-3">
+                    <label for="type" class="form-label">Type:</label>
+                    <input type="text" class="form-control" th:field="*{type}" id="type" required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="sender" class="form-label">Sender:</label>
+                    <input type="text" class="form-control" th:field="*{sender}" id="sender" required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="receiver" class="form-label">Receiver:</label>
+                    <input type="text" class="form-control" th:field="*{receiver}" id="receiver" required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="registerDate" class="form-label">Register Date:</label>
+                    <input type="date" class="form-control" th:field="*{registerDate}" id="registerDate" required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="sendedDate" class="form-label">Sended Date:</label>
+                    <input type="date" class="form-control" th:field="*{sendedDate}" id="sendedDate" required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="aboutDocument" class="form-label">About Document:</label>
+                    <input type="text" class="form-control" th:field="*{aboutDocument}" id="aboutDocument" required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="content" class="form-label">Content (File):</label>
+                    <input type="file" class="form-control" name="file" id="file" />
+
+                </div>
+
+                <button type="submit" class="btn btn-primary">Update Document</button>
+            </form>
         </div>
-        <div class="mb-3">
-            <label for="sender" class="form-label">Sender</label>
-            <input type="text" class="form-control" id="sender" name="sender" th:value="${document.sender}" required>
-        </div>
-        <div class="mb-3">
-            <label for="receiver" class="form-label">Receiver</label>
-            <input type="text" class="form-control" id="receiver" name="receiver" th:value="${document.receiver}" required>
-        </div>
-        <div class="mb-3">
-            <label for="sendedDate" class="form-label">Sended Date</label>
-            <input type="text" class="form-control" id="sendedDate" name="sended_date" th:value="${document.sendedDate}" required>
-        </div>
-        <div class="mb-3">
-            <label for="registerNumber" class="form-label">Register Number</label>
-            <input type="text" class="form-control" id="registerNumber" name="register_number" th:value="${document.registerNumber}" required>
-        </div>
-        <div class="mb-3">
-            <label for="registerDate" class="form-label">Register Date</label>
-            <input type="text" class="form-control" id="registerDate" name="register_date" th:value="${document.registerDate}" required>
-        </div>
-        <div class="mb-3">
-            <label for="aboutDocument" class="form-label">About Document</label>
-            <input type="text" class="form-control" id="aboutDocument" name="about_document" th:value="${document.aboutDocument}" required>
-        </div>
-        <div class="mb-3">
-            <label for="serialNumber" class="form-label">Serial Number</label>
-            <input type="text" class="form-control" id="serialNumber" name="serial_number" th:value="${document.serialNumber}" required>
-        </div>
-        <div class="mb-3">
-            <label for="documentFile" class="form-label">Document File (optional)</label>
-            <input type="file" class="form-control" id="documentFile" name="document_file">
-        </div>
-        <button type="submit" class="btn btn-primary">Save Changes</button>
-    </form>
+    </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
-```
-
-This code provides a form for editing document details. It includes fields for all document attributes and an optional file upload for the document file itself. The form submits to the `/save` endpoint, which should handle the update logic on the server side.

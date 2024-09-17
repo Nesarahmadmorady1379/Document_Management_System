@@ -1,16 +1,16 @@
-package com.Documents.entity;
+package com.documentsystem.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
-
 @Entity
 public class Document {
-    @Id
+    
+ @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     private String type;
     private String sender;
     private String receiver;
@@ -19,27 +19,59 @@ public class Document {
     private String registerDate;
     private String aboutDocument;
     private String serialNumber;
-    
-  // To store the file type
+	@Column(length = 512,nullable = false,unique =true)
+    private String name;
+	private Long size;
+	@Column(name = "content", columnDefinition = "LONGBLOB")
+	private byte[]content;
+
+  
 
     public Document() {
     }
 
-    public Document(int id, String type, String sender, String receiver, String sendedDate, String registerNumber,
-                    String registerDate, String aboutDocument, String serialNumber, byte[] fileData, String fileName, String fileType) {
-        this.id = id;
-        this.type = type;
-        this.sender = sender;
-        this.receiver = receiver;
-        this.sendedDate = sendedDate;
-        this.registerNumber = registerNumber;
-        this.registerDate = registerDate;
-        this.aboutDocument = aboutDocument;
-        this.serialNumber = serialNumber;
-       
-    }
+    public Document(long id, String type, String sender, String receiver, String sendedDate, String registerNumber,
+                String registerDate, String aboutDocument, String serialNumber, byte[] content, String name, Long size) {
+    this.id = id;
+    this.type = type;
+    this.sender = sender;
+    this.receiver = receiver;
+    this.sendedDate = sendedDate;
+    this.registerNumber = registerNumber;
+    this.registerDate = registerDate;
+    this.aboutDocument = aboutDocument;
+    this.serialNumber = serialNumber;
+    this.name = name;
+    this.size = size;
+    this.content = content;
+}
 
-	public int getId() {
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public long getSize() {
+		return size;
+	}
+
+	public void setSize(long size) {
+		this.size = size;
+	}
+
+	public byte[] getContent() {
+		return content;
+	}
+
+	public void setContent(byte[] content) {
+		this.content = content;
+	}
+
+	public long getId() {
 		return id;
 	}
 
@@ -109,9 +141,4 @@ public class Document {
 
 	public void setSerialNumber(String serialNumber) {
 		this.serialNumber = serialNumber;
-	}
-
-	
-
- 
-}
+	}}
